@@ -1,5 +1,4 @@
 import {
-  Box,
   Flex,
   VStack,
   Text,
@@ -61,7 +60,7 @@ const Page = () => {
           iconColor="#242422ff"
           borderColor="#242422ff"
         >
-          Keep me logged in - applies to all log in options below.{' '}
+          Keep me logged in - applies to all log in options below.
           <Link href="/">More info</Link>
         </Checkbox>
         <Button
@@ -100,7 +99,7 @@ const Page = () => {
           ))}
         </Grid>
         <Text fontSize="sm">
-          By clicking 'Log in' you agree to our website KicksClub{' '}
+          By clicking 'Log in' you agree to our website KicksClub
           <Link href={'#'}>
             Terms & Conditions, Kick Privacy Notice and Terms and Conditions
           </Link>
