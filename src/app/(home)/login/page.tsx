@@ -99,7 +99,7 @@ const Page = () => {
           ))}
         </Grid>
         <Text fontSize="sm">
-          By clicking 'Log in' you agree to our website KicksClub
+          By clicking &apos;Log in&apos; you agree to our website KicksClub
           <Link href={'#'}>
             Terms & Conditions, Kick Privacy Notice and Terms and Conditions
           </Link>
