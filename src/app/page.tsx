@@ -5,7 +5,9 @@ export default function Home() {
     <Box>
       <Heading>Welcome to FreshKicks!</Heading>
       <Text>To get started, Signup.</Text>
-      <Button>Create Account</Button>
+      <Button as={'a'} href="/login" colorScheme="black" variant="solid">
+        Login
+      </Button>
     </Box>
   );
 }

@@ -34,7 +34,7 @@ const Navbar = () => {
     >
       <Flex
         alignItems={'center'}
-        p={8}
+        p={{ base: 3, md: 8 }}
         justifyContent={'space-between'}
         w={'100%'}
       >
@@ -98,7 +98,7 @@ const Navbar = () => {
           </Box>
           <Box
             cursor={'pointer'}
-            ml={{ md: '0', base: '20px' }}
+            ml={{ md: '0', base: '40px' }}
             w={{ md: 'auto', base: '20px' }}
           >
             <Image
