@@ -47,9 +47,9 @@ const Page = () => {
             <Input
               type="email"
               placeholder="Enter email"
-              border={'2px solid #242422ff'}
+              border={'1px solid #242422ff'}
               _focus={{ borderColor: '#242422ff' }}
-              _hover={{ border: '2px solid #242422ff' }}
+              _hover={{ border: '1px solid #242422ff' }}
               focusBorderColor="transparent"
             />
           </FormControl>
@@ -58,9 +58,9 @@ const Page = () => {
               <Input
                 type={showPassword ? 'text' : 'password'}
                 placeholder="Password"
-                border={'2px solid #242422ff'}
+                border={'1px solid #242422ff'}
                 _focus={{ borderColor: '#242422ff' }}
-                _hover={{ border: '2px solid #242422ff' }}
+                _hover={{ border: '1px solid #242422ff' }}
                 focusBorderColor="transparent"
                 pr={'4.5rem'}
               />
