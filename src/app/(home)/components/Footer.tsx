@@ -59,6 +59,7 @@ const Footer = () => {
                 _focus={{
                   borderColor: 'white',
                 }}
+                w={{ base: '100%', md: '90%' }}
               />
               <Button
                 bg={'#242422ff'}

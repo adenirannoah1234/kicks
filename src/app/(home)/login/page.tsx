@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Flex,
   VStack,
@@ -7,17 +9,25 @@ import {
   Input,
   FormControl,
   Checkbox,
-  UnorderedList,
-  ListItem,
   Grid,
+  InputRightElement,
+  IconButton,
+  InputGroup,
 } from '@chakra-ui/react';
 import React from 'react';
 import Image from 'next/image';
 import { GoArrowRight } from 'react-icons/go';
+import Join from '../components/Join';
+import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
+import { useState } from 'react';
 
 import Link from 'next/link';
 
 const Page = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => setShowPassword(!showPassword);
+
   return (
     <Flex
       width="100%"
@@ -44,14 +54,35 @@ const Page = () => {
             />
           </FormControl>
           <FormControl id="password" isRequired>
-            <Input
-              type="password"
-              placeholder="Password"
-              border={'2px solid #242422ff'}
-              _focus={{ borderColor: '#242422ff' }}
-              _hover={{ border: '2px solid #242422ff' }}
-              focusBorderColor="transparent"
-            />
+            <InputGroup>
+              <Input
+                type={showPassword ? 'text' : 'password'}
+                placeholder="Password"
+                border={'2px solid #242422ff'}
+                _focus={{ borderColor: '#242422ff' }}
+                _hover={{ border: '2px solid #242422ff' }}
+                focusBorderColor="transparent"
+                pr={'4.5rem'}
+              />
+              <InputRightElement w={'4.5rem'}>
+                <IconButton
+                  h={'1.75rem'}
+                  size={'lg'}
+                  aria-label={showPassword ? 'Hide password' : 'Show password'}
+                  icon={
+                    showPassword ? (
+                      <ViewOffIcon boxSize={'6'} />
+                    ) : (
+                      <ViewIcon boxSize={'6'} />
+                    )
+                  }
+                  onClick={togglePasswordVisibility}
+                  variant="ghost"
+                  colorScheme="gray"
+                  _hover={{ bg: 'transparent' }}
+                />
+              </InputRightElement>
+            </InputGroup>
           </FormControl>
         </VStack>
         <Checkbox
@@ -100,53 +131,13 @@ const Page = () => {
         </Grid>
         <Text fontSize="sm">
           By clicking &apos;Log in&apos; you agree to our website KicksClub
-          <Text textDecoration={'underline'}>
-            <Link href={'#'}>
-              Terms & Conditions, Kick Privacy Notice and Terms and Conditions
-            </Link>
-          </Text>
+          <Link href={'#'}>
+            Terms & Conditions, Kick Privacy Notice and Terms and Conditions
+          </Link>
         </Text>
       </VStack>
 
-      <VStack
-        width={{ base: '100%', md: '55%' }}
-        bg="#fafafaff"
-        spacing={5}
-        p={6}
-        rounded="lg"
-        align="stretch"
-      >
-        <Heading size="lg">Join Kicks Club Get Rewarded Today.</Heading>
-        <Text>
-          As kicks club member you will get rewarded with what you love for
-          doing what you love. Sign up today and receive access to these level 1
-          benefits.
-        </Text>
-        <UnorderedList spacing={2}>
-          <ListItem>Free shipping.</ListItem>
-          <ListItem>A 15% off voucher for your next purchase.</ListItem>
-          <ListItem>Access to Members Only products and sales.</ListItem>
-          <ListItem>Access to adidas Running and Training apps</ListItem>
-          <ListItem>Special offers and promotions</ListItem>
-        </UnorderedList>
-        <Text>
-          Join now to start earning points, reach new levels and unlock more
-          rewards and benefits from Kicks Club.
-        </Text>
-        <Button
-          color={'white'}
-          bg={'#242422ff'}
-          variant="solid"
-          _hover={{ bg: '#242422ff' }}
-          size="lg"
-          width="100%"
-          justifyContent="space-between"
-          alignItems="center"
-          rightIcon={<GoArrowRight />}
-        >
-          Join the club
-        </Button>
-      </VStack>
+      <Join />
     </Flex>
   );
 };
