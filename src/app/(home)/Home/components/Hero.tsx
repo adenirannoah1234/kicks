@@ -83,7 +83,7 @@ const HeroSection = () => {
                 color="white"
                 textShadow="1px 1px 3px rgba(0,0,0,0.6)"
               >
-                Nike introducing the new Air Max for everyone's comfort
+                Nike introducing the new Air Max for everyone&apos;s comfort
               </Text>
               <Button
                 color={'white'}
