@@ -26,7 +26,7 @@ const HeroSection = () => {
 
   return (
     <Box
-      h={{ md: '100vh', base: '50vh' }}
+      h={{ md: '100vh', base: '70vh' }}
       w="100%"
       backgroundImage={`url(${shoeImages[currentSide]})`}
       backgroundSize="cover"
