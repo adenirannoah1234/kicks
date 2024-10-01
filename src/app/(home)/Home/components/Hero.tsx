@@ -26,13 +26,13 @@ const HeroSection = () => {
 
   return (
     <Box
-      h="100vh"
+      h={{ md: '100vh', base: '70vh' }}
       w="100%"
       backgroundImage={`url(${shoeImages[currentSide]})`}
       backgroundSize="cover"
       backgroundPosition="center"
       position="relative"
-      borderRadius={{ base: '2rem', md: '3rem' }}
+      borderRadius={{ base: '4rem', md: '3rem' }}
     >
       <Container maxW="container.xl" h="100%">
         <Flex direction="column" justify="space-between" h="100%" py={8}>
@@ -46,6 +46,7 @@ const HeroSection = () => {
             color="white"
             py={2}
             px={4}
+            borderRadius={8}
           >
             <Text fontSize="sm" fontWeight="bold">
               Nike product of the Year
