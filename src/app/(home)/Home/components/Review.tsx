@@ -66,7 +66,7 @@ const ReviewSection = () => {
   ];
 
   return (
-    <Box p={6}>
+    <Box py={8}>
       <Flex justifyContent="space-between" alignItems="center" mb={4}>
         <Text fontSize="2xl" fontWeight="bold">
           REVIEWS
