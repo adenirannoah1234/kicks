@@ -9,7 +9,7 @@ const page = () => {
   return (
     <Box py={'5rem'}>
       <Box
-        h={{ md: '55vh', base: '30vh' }}
+        h={{ md: '55vh', base: '25vh' }}
         w="100%"
         backgroundImage={`url(${shoeImages.url})`}
         backgroundSize="cover"
