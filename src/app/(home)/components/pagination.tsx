@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Button, Text, Box, useBreakpointValue } from '@chakra-ui/react';
+import { Flex, Button, Text, useBreakpointValue } from '@chakra-ui/react';
 import { MdNavigateNext, MdNavigateBefore } from 'react-icons/md';
 
 const Pagination = () => {
