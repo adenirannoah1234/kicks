@@ -76,7 +76,7 @@ const Page: React.FC = () => {
           isClosable: true,
         });
       } else if (response?.ok) {
-        router.push('/'); // Redirect to dashboard or home page
+        router.push('/');
       }
     } catch (error) {
       console.error('Failed to login:', error);

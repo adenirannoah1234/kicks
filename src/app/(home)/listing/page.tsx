@@ -9,17 +9,20 @@ const page = () => {
   return (
     <Box py={'5rem'}>
       <Box
-        h={{ md: '55vh', base: '25vh' }}
+        h={{ md: '55vh', base: '30vh' }}
         w="100%"
         backgroundImage={`url(${shoeImages.url})`}
         backgroundSize="cover"
         backgroundPosition="center"
         position="relative"
-        borderRadius={{ base: '4rem', md: '3rem' }}
+        borderRadius={{ base: '2rem', md: '3rem' }}
       >
-        <Box width={'49%'} p={'3rem'}>
+        <Box
+          width={{ base: '70%', md: '49%' }}
+          p={{ md: '3rem', base: '1rem' }}
+        >
           <Text
-            fontSize={'2xl'}
+            fontSize={{ base: '0.8rem', md: '2xl' }}
             fontWeight={'bold'}
             color={'white'}
             mt={'1rem'}
@@ -27,14 +30,19 @@ const page = () => {
             Limited time only
           </Text>
           <Heading
-            fontSize={'4rem'}
+            fontSize={{ base: '1.5rem', md: '4rem' }}
             fontWeight={'bold'}
             color={'white'}
             //   mt={'1rem'}
           >
             Get 30% off
           </Heading>
-          <Text fontSize={'xl'} fontWeight={'bold'} color={'white'} mt={'1rem'}>
+          <Text
+            fontSize={{ base: '0.8rem', md: 'xl' }}
+            fontWeight={'bold'}
+            color={'white'}
+            mt={'1rem'}
+          >
             Sneakers made with your comfort in mind so you can put all your
             focus into your next session.
           </Text>

@@ -1,9 +1,10 @@
 'use client';
 
-import { Box, Button, Heading, Text } from '@chakra-ui/react';
+import { Box, Button, Heading, Text, Flex } from '@chakra-ui/react';
 import { useSession } from 'next-auth/react';
 import { signOut } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import { LineWave } from 'react-loader-spinner';
 
 export default function Home() {
   const { status } = useSession();
@@ -13,6 +14,25 @@ export default function Home() {
     return router.push('/login');
   }
 
+  if (status === 'loading') {
+    return (
+      <Flex
+        justifyContent="center"
+        alignItems="center"
+        height="100vh"
+        width="100vw"
+        backgroundColor="#f5f5f5"
+      >
+        <LineWave
+          height="300"
+          width="300"
+          color="black"
+          ariaLabel="three-dots-loading"
+          visible={true}
+        />
+      </Flex>
+    );
+  }
   return (
     <Box>
       <Heading>Welcome to FreshKicks!</Heading>

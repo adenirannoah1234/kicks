@@ -19,7 +19,7 @@ interface ShoeGridProps {
 }
 
 const ShoeProductCard: React.FC<ShoeProductCardProps> = ({ shoe }) => (
-  <Box position="relative">
+  <Box position="relative" w="100%">
     <Box
       position="absolute"
       top="2"
@@ -72,18 +72,28 @@ const ShoeProductCard: React.FC<ShoeProductCardProps> = ({ shoe }) => (
     >
       <Text mr="2">VIEW PRODUCT - </Text>
       <Text fontWeight="bold" color="#ffa42e">
-        ${shoe.price}
+        {shoe.price}
       </Text>
     </Button>
   </Box>
 );
 
 const ShoeGrid: React.FC<ShoeGridProps> = ({ shoeData }) => (
-  <Grid templateColumns="repeat(3, 1fr)" gap={4}>
-    {shoeData.map((shoe, index) => (
-      <ShoeProductCard key={index} shoe={shoe} />
-    ))}
-  </Grid>
+  <Box width="100%">
+    <Grid
+      templateColumns={{
+        base: 'repeat(1, 1fr)',
+        md: 'repeat(2, 1fr)',
+        lg: 'repeat(3, 1fr)',
+      }}
+      gap={6}
+      width="100%"
+    >
+      {shoeData.map((shoe, index) => (
+        <ShoeProductCard key={index} shoe={shoe} />
+      ))}
+    </Grid>
+  </Box>
 );
 
 export { ShoeProductCard, ShoeGrid };
