@@ -10,9 +10,9 @@ import {
   IconButton,
   Select,
 } from '@chakra-ui/react';
-import Link from 'next/link';
+
 import Image from 'next/image';
-import { Heart, Trash2 } from 'lucide-react';
+import { Heart } from 'lucide-react';
 import { IoTrashBinOutline } from 'react-icons/io5';
 
 import ProductCarousel from '../components/productsCarousel';
