@@ -88,7 +88,7 @@ const page = () => {
                     DROPSET TRAINER SHOES
                   </Text>
                   <Text color="gray.600" mb={1}>
-                    Men's Road Running Shoes
+                    Men&apos;s Road Running Shoes
                   </Text>
                   <Text color="gray.600" mb={4}>
                     Enamel Blue/University White
