@@ -151,75 +151,86 @@ const ProductCarousel = () => {
   const totalPages = Math.ceil(totalSlides / slidesPerView);
 
   return (
-    <Container maxW="7xl" py={8}>
-      <Box position="relative" mb={16}>
-        <Flex justify="space-between" align="center" mb={8}>
-          <Heading size="lg">You may also like</Heading>
-          <HStack spacing={2}>
-            <IconButton
-              aria-label="Previous slide"
-              icon={<ChevronLeftIcon />}
-              onClick={scrollPrev}
-              borderWidth="1px"
-              borderColor="gray.200"
-              color={'white'}
-              bg="black"
-              _hover={{ bg: 'black' }}
-              isDisabled={!canScrollPrev}
-            />
-            <IconButton
-              aria-label="Next slide"
-              icon={<ChevronRightIcon />}
-              onClick={scrollNext}
-              borderWidth="1px"
-              borderColor="gray.200"
-              color={'white'}
-              bg="black"
-              _hover={{ bg: 'black' }}
-              isDisabled={!canScrollNext}
-            />
-          </HStack>
-        </Flex>
-
-        <Box className="embla" overflow="hidden" ref={emblaRef}>
+    <Box width="100%" px={{ base: 0, md: 4 }}>
+      <Container maxW={{ base: '100%', md: '7xl' }} p={{ base: 0, md: 8 }}>
+        <Box position="relative" mb={16}>
           <Flex
-            className="embla__container"
-            sx={{
-              marginLeft: '-20px',
-              '& > *': { paddingLeft: '20px' },
-            }}
+            justify="space-between"
+            align="center"
+            mb={8}
+            w="100%"
+            px={{ base: 4, md: 0 }}
           >
-            {products.map((product) => (
+            <Heading size={{ md: 'lg', base: 'md' }}>You may also like</Heading>
+            <HStack spacing={2}>
+              <IconButton
+                aria-label="Previous slide"
+                icon={<ChevronLeftIcon />}
+                onClick={scrollPrev}
+                borderWidth="1px"
+                borderColor="gray.200"
+                color="white"
+                bg="black"
+                _hover={{ bg: 'black' }}
+                isDisabled={!canScrollPrev}
+              />
+              <IconButton
+                aria-label="Next slide"
+                icon={<ChevronRightIcon />}
+                onClick={scrollNext}
+                borderWidth="1px"
+                borderColor="gray.200"
+                color="white"
+                bg="black"
+                _hover={{ bg: 'black' }}
+                isDisabled={!canScrollNext}
+              />
+            </HStack>
+          </Flex>
+
+          <Box className="embla" overflow="hidden" ref={emblaRef}>
+            <Flex
+              className="embla__container"
+              sx={{
+                marginLeft: { base: '0px', md: '-20px' },
+                '& > *': {
+                  paddingLeft: { base: '0px', md: '20px' },
+                },
+              }}
+            >
+              {products.map((product) => (
+                <Box
+                  key={product.id}
+                  flex={`0 0 ${100 / slidesPerView}%`}
+                  className="embla__slide"
+                  px={{ base: 2, md: 0 }}
+                >
+                  <ProductCard product={product} />
+                </Box>
+              ))}
+            </Flex>
+          </Box>
+
+          <Flex justify="center" mt={6}>
+            {[...Array(totalPages)].map((_, index) => (
               <Box
-                key={product.id}
-                flex={`0 0 ${100 / slidesPerView}%`}
-                className="embla__slide"
-              >
-                <ProductCard product={product} />
-              </Box>
+                key={index}
+                h="4px"
+                w="32px"
+                bg={
+                  Math.floor(selectedIndex / slidesPerView) === index
+                    ? 'blue.500'
+                    : 'gray.300'
+                }
+                mx="2px"
+                transition="all 0.2s"
+                rounded="full"
+              />
             ))}
           </Flex>
         </Box>
-
-        <Flex justify="center" mt={6}>
-          {[...Array(totalPages)].map((_, index) => (
-            <Box
-              key={index}
-              h="4px"
-              w="32px"
-              bg={
-                Math.floor(selectedIndex / slidesPerView) === index
-                  ? 'blue.500'
-                  : 'gray.300'
-              }
-              mx="2px"
-              transition="all 0.2s"
-              rounded="full"
-            />
-          ))}
-        </Flex>
-      </Box>
-    </Container>
+      </Container>
+    </Box>
   );
 };
 
