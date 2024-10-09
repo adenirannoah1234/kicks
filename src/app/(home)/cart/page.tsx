@@ -21,7 +21,7 @@ const page = () => {
   return (
     <Box p={8}>
       <Box maxW="1200px" mx="auto">
-        <Box mb={8} w={{ md: '62%', base: 'full' }}>
+        <Box mb={8} w={{ md: '62%', base: 'full' }} alignItems={'flex-start'}>
           <Heading size="lg" mb={2}>
             Saving to celebrate
           </Heading>
@@ -138,15 +138,22 @@ const page = () => {
                     <IconButton
                       aria-label="Add to wishlist"
                       icon={<Heart />}
-                      variant="ghost"
-                      colorScheme="gray"
+                      color="black"
+                      cursor="pointer"
+                      bg="#EFEFEF"
+                      w="1.5rem"
+                      h="2.0rem"
+                      // fontSize={'1.5rem'}
                     />
                     <IconButton
                       aria-label="Remove item"
                       icon={<IoTrashBinOutline />}
-                      variant="ghost"
-                      colorScheme="gray"
-                      fontSize={'1.5rem'}
+                      color="black"
+                      cursor="pointer"
+                      bg="#EFEFEF"
+                      w="1.5rem"
+                      h="2.0rem"
+                      fontSize={'1.4rem'}
                     />
                   </Flex>
                 </Box>
@@ -164,7 +171,7 @@ const page = () => {
           </Box>
 
           {/* Right side - Order Summary */}
-          <Box w="380px" p={6} borderRadius="md">
+          <Box w="380px" p={6} borderRadius="md" mt={{ md: '0', base: '5' }}>
             <Heading size="lg" mb={6}>
               Order Summary
             </Heading>
@@ -205,7 +212,7 @@ const page = () => {
           </Box>
         </Flex>
       </Box>
-      <Box>
+      <Box mt={'10'}>
         <ProductCarousel />
       </Box>
     </Box>
