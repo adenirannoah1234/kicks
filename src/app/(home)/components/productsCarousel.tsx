@@ -194,7 +194,7 @@ const ProductCarousel = () => {
               sx={{
                 marginLeft: { base: '0px', md: '-20px' },
                 '& > *': {
-                  paddingLeft: { base: '0px', md: '20px' },
+                  paddingLeft: { base: '-20px', md: '20px' },
                 },
               }}
             >

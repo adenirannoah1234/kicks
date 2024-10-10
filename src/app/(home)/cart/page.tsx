@@ -19,7 +19,7 @@ import ProductCarousel from '../components/productsCarousel';
 
 const page = () => {
   return (
-    <Box p={8}>
+    <Box py={8}>
       <Box maxW="1200px" mx="auto">
         <Box mb={8} w={{ md: '62%', base: 'full' }} alignItems={'flex-start'}>
           <Heading size="lg" mb={2}>
