@@ -20,7 +20,7 @@ export default function Home() {
         justifyContent="center"
         alignItems="center"
         height="100vh"
-        width="100vw"
+        width="100%"
         backgroundColor="#f5f5f5"
       >
         <LineWave
