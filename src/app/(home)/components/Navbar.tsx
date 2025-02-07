@@ -33,7 +33,7 @@ const Navbar = () => {
         justifyContent={'space-between'}
         w={'100%'}
       >
-        <Flex alignItems="center" gap={3}>
+        <Flex alignItems="center" gap={2}>
           <Flex alignItems="center">
             <IconButton
               onClick={onOpen}
@@ -54,7 +54,7 @@ const Navbar = () => {
               Menu
             </Text>
           </Flex>
-          <Flex alignItems="center" display={{ base: 'none', md: 'block' }}>
+          <Flex alignItems="center" display={{ base: 'none', md: 'flex' }}>
             <IconButton
               // onClick={onOpen}
               icon={<GoSearch size={22} />}
