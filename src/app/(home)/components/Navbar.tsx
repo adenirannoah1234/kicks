@@ -1,29 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Box,
   Flex,
   Text,
-  Button,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
   useDisclosure,
   Drawer,
   DrawerBody,
-  DrawerHeader,
   DrawerOverlay,
   DrawerContent,
-  Stack,
-  RadioGroup,
-  Radio,
   IconButton,
 } from '@chakra-ui/react';
 import Image from 'next/image';
-import { FaCaretDown } from 'react-icons/fa';
+
 import { X, Menu as MenuIcon } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
-import colors from '../../constants';
+
 import { ShoppingCart } from 'lucide-react';
 import { CiUser } from 'react-icons/ci';
 import { CiHeart } from 'react-icons/ci';
@@ -32,12 +22,6 @@ import { GoSearch } from 'react-icons/go';
 const Navbar = () => {
   // const { isOpen, onToggle } = useDisclosure();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [placement, setPlacement] = useState('left');
-
-  const menuVariants = {
-    hidden: { opacity: 0, x: -50 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.3 } },
-  };
 
   return (
     <Box as="header" bg={'#000000'} boxShadow="md" width="100%">
