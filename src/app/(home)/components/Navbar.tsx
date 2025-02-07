@@ -20,14 +20,12 @@ import { CiHeart } from 'react-icons/ci';
 import { GoSearch } from 'react-icons/go';
 
 const Navbar = () => {
-  // const { isOpen, onToggle } = useDisclosure();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <Box as="header" bg={'#000000'} boxShadow="md" width="100%">
       <Flex
         alignItems={'center'}
-        // p={{ base: 3, md: 8 }}
         px={{ base: 3, md: 8 }}
         py={{ base: 3, md: 5 }}
         justifyContent={'space-between'}
