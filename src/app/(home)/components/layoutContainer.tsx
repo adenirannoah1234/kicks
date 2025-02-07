@@ -11,11 +11,11 @@ function LayoutContainer({ children }: { children: React.ReactNode }) {
       minH="100vh"
       w="100%"
       overflowX="hidden"
-      px={{ base: '5', md: '10' }}
+      // px={{ base: '5', md: '10' }}
     >
       <Box>
         <Navbar />
-        <Box flex="1" w="full">
+        <Box flex="1" w="full" bg={'#f2deff'}>
           {children}
         </Box>
       </Box>

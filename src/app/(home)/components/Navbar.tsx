@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   Flex,
@@ -9,14 +9,30 @@ import {
   MenuList,
   MenuItem,
   useDisclosure,
+  Drawer,
+  DrawerBody,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  Stack,
+  RadioGroup,
+  Radio,
+  IconButton,
 } from '@chakra-ui/react';
 import Image from 'next/image';
 import { FaCaretDown } from 'react-icons/fa';
 import { X, Menu as MenuIcon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import colors from '../../constants';
+import { ShoppingCart } from 'lucide-react';
+import { CiUser } from 'react-icons/ci';
+import { CiHeart } from 'react-icons/ci';
+import { GoSearch } from 'react-icons/go';
 
 const Navbar = () => {
-  const { isOpen, onToggle } = useDisclosure();
+  // const { isOpen, onToggle } = useDisclosure();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [placement, setPlacement] = useState('left');
 
   const menuVariants = {
     hidden: { opacity: 0, x: -50 },
@@ -24,66 +40,98 @@ const Navbar = () => {
   };
 
   return (
-    <Box
-      as="header"
-      bg={'#fafafa'}
-      boxShadow="md"
-      width="100%"
-      mt={'30'}
-      borderRadius={'20px'}
-    >
+    <Box as="header" bg={'#000000'} boxShadow="md" width="100%">
       <Flex
         alignItems={'center'}
-        p={{ base: 3, md: 8 }}
+        // p={{ base: 3, md: 8 }}
+        px={{ base: 3, md: 8 }}
+        py={{ base: 3, md: 5 }}
         justifyContent={'space-between'}
         w={'100%'}
       >
-        <Flex alignItems={'center'}>
-          <Box display={{ base: 'block', md: 'none' }} mr={4}>
-            <Button onClick={onToggle} bg="transparent">
-              {isOpen ? <X /> : <MenuIcon />}
-            </Button>
-          </Box>
-          <Flex display={{ base: 'none', md: 'flex' }}>
-            <Image src="/drops.png" alt="new drops" width={150} height={20} />
+        <Flex alignItems="center" gap={3}>
+          <Flex alignItems="center">
+            <IconButton
+              onClick={onOpen}
+              icon={<MenuIcon size={22} />}
+              // variant="outline"
+              aria-label="open drawer"
+              bg={'none'}
+              color={'#ffd700'}
+              _hover={{
+                bg: 'none',
+              }}
+            />
+            <Text
+              display={{ base: 'none', md: 'block' }}
+              color={'white'}
+              fontSize={'sm'}
+            >
+              Menu
+            </Text>
           </Flex>
-          <Flex display={{ base: 'none', md: 'flex' }}>
-            <Menu>
-              <MenuButton
-                as={Button}
-                bg={'#fafafa'}
-                rightIcon={<FaCaretDown />}
-              >
-                Men
-              </MenuButton>
-              <MenuList>
-                <MenuItem minH="48px">
-                  <span>Fluffybuns the Destroyer</span>
-                </MenuItem>
-                <MenuItem minH="40px">
-                  <span>Simon the pensive</span>
-                </MenuItem>
-              </MenuList>
-            </Menu>
-            <Menu>
-              <MenuButton
-                as={Button}
-                bg={'#fafafa'}
-                rightIcon={<FaCaretDown />}
-              >
-                Women
-              </MenuButton>
-              <MenuList>
-                <MenuItem minH="48px">
-                  <span>Fluffybuns the Destroyer</span>
-                </MenuItem>
-                <MenuItem minH="40px">
-                  <span>Simon the pensive</span>
-                </MenuItem>
-              </MenuList>
-            </Menu>
+          <Flex alignItems="center" display={{ base: 'none', md: 'block' }}>
+            <IconButton
+              // onClick={onOpen}
+              icon={<GoSearch size={22} />}
+              // variant="outline"
+              aria-label="open search"
+              bg={'none'}
+              color={'#ffd700'}
+              _hover={{
+                bg: 'none',
+              }}
+            />
+            <Text
+              display={{ base: 'none', md: 'block' }}
+              color={'white'}
+              fontSize={'sm'}
+            >
+              Search
+            </Text>
           </Flex>
         </Flex>
+
+        <Drawer placement="left" onClose={onClose} isOpen={isOpen}>
+          <DrawerOverlay />
+          <DrawerContent>
+            <Flex
+              px={3}
+              py={5}
+              borderBottomWidth="1px"
+              alignItems="center"
+              gap={2}
+            >
+              <IconButton
+                onClick={onClose}
+                icon={<X />}
+                // variant="outline"
+                aria-label="close drawer"
+                bg={'transparent'}
+                mr={2}
+              />
+              <Text display={{ base: 'none', md: 'block' }}>Close</Text>
+              <IconButton
+                // onClick={onOpen}
+                icon={<GoSearch size={22} />}
+                // variant="outline"
+                aria-label="open search"
+                // bg={'none'}
+                // color={'#ffd700'}
+                bg={'transparent'}
+                _hover={{
+                  bg: 'none',
+                }}
+                display={{ base: 'block', md: 'none' }}
+              />
+            </Flex>
+            <DrawerBody>
+              <p>Some contents...</p>
+              <p>Some contents...</p>
+              <p>Some contents...</p>
+            </DrawerBody>
+          </DrawerContent>
+        </Drawer>
         <Box>
           <Image src="/kicks.png" alt="logo" width={150} height={50} />
         </Box>
@@ -91,103 +139,43 @@ const Navbar = () => {
           alignItems={'center'}
           justifyItems={'space-between'}
           justifyContent={'space-between'}
-          gap={10}
+          gap={3}
         >
-          <Box cursor={'pointer'} display={{ base: 'none', md: 'block' }}>
-            <Image src="/search.png" alt="search" width={30} height={10} />
-          </Box>
-          <Box
-            cursor={'pointer'}
-            ml={{ md: '0', base: '40px' }}
-            w={{ md: 'auto', base: '20px' }}
-          >
-            <Image
-              src="/user.png"
-              alt="user"
-              width={30}
-              height={10}
-              objectFit="contain"
-            />
-          </Box>
+          <IconButton
+            icon={<CiHeart size={22} />}
+            // variant="outline"
+            aria-label="open user"
+            bg={'none'}
+            color={'#ffd700'}
+            _hover={{
+              bg: 'none',
+            }}
+            display={{ base: 'none', md: 'block' }}
+          />
+          <IconButton
+            icon={<CiUser size={22} />}
+            // variant="outline"
+            aria-label="open user"
+            bg={'none'}
+            color={'#ffd700'}
+            _hover={{
+              bg: 'none',
+            }}
+          />
           <Box>
-            <Text
-              bg={'#ffa52f'}
-              color={'black'}
-              fontSize={'lg'}
-              px={4}
-              py={2}
-              borderRadius={'100%'}
-              cursor={'pointer'}
-            >
-              0
-            </Text>
+            <IconButton
+              icon={<ShoppingCart size={22} />}
+              // variant="outline"
+              aria-label="open drawer"
+              bg={'none'}
+              color={'#ffd700'}
+              _hover={{
+                bg: 'none',
+              }}
+            />
           </Box>
         </Flex>
       </Flex>
-
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-            variants={menuVariants}
-          >
-            <Box bg={'#fafafa'} p={4} display={{ base: 'block', md: 'none' }}>
-              <Flex direction="column" alignItems="flex-start" gap={4}>
-                <Image
-                  src="/drops.png"
-                  alt="new drops"
-                  width={150}
-                  height={20}
-                />
-                <Menu>
-                  <MenuButton
-                    as={Button}
-                    bg={'#fafafa'}
-                    rightIcon={<FaCaretDown />}
-                  >
-                    Men
-                  </MenuButton>
-                  <MenuList>
-                    <MenuItem minH="48px">
-                      <span>Fluffybuns the Destroyer</span>
-                    </MenuItem>
-                    <MenuItem minH="40px">
-                      <span>Simon the pensive</span>
-                    </MenuItem>
-                  </MenuList>
-                </Menu>
-                <Menu>
-                  <MenuButton
-                    as={Button}
-                    bg={'#fafafa'}
-                    rightIcon={<FaCaretDown />}
-                  >
-                    Women
-                  </MenuButton>
-                  <MenuList>
-                    <MenuItem minH="48px">
-                      <span>Fluffybuns the Destroyer</span>
-                    </MenuItem>
-                    <MenuItem minH="40px">
-                      <span>Simon the pensive</span>
-                    </MenuItem>
-                  </MenuList>
-                </Menu>
-                <Box cursor={'pointer'}>
-                  <Image
-                    src="/search.png"
-                    alt="search"
-                    width={30}
-                    height={10}
-                  />
-                </Box>
-              </Flex>
-            </Box>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </Box>
   );
 };

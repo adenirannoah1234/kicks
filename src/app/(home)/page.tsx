@@ -9,16 +9,9 @@ import ReviewSection from './components/Review';
 const page = () => {
   return (
     <Box>
-      <Heading
-        textAlign={'center'}
-        fontSize={{ base: '3.52rem', md: '12rem' }}
-        fontWeight={'bold'}
-      >
-        DO IT <span style={{ color: '#4b69e3ff' }}>RIGHT</span>
-      </Heading>
       <HeroSection />
-      <Drops />
-      <SneakerCarousel
+      {/* <Drops /> */}
+      {/* <SneakerCarousel
         slides={[
           {
             image: '/image1.png',
@@ -36,7 +29,7 @@ const page = () => {
             subtitle: 'The perfect shoe for basketball',
           },
         ]}
-      />
+      /> */}
       <ReviewSection />
     </Box>
   );
