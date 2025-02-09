@@ -9,6 +9,7 @@ import {
   DrawerOverlay,
   DrawerContent,
   IconButton,
+  Heading,
 } from '@chakra-ui/react';
 import Image from 'next/image';
 
@@ -23,7 +24,17 @@ const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <Box as="header" bg={'#000000'} boxShadow="md" width="100%">
+    <Box
+      as="header"
+      bg={'#000000'}
+      boxShadow="md"
+      width="100%"
+      position="fixed"
+      top={0}
+      left={0}
+      right={0}
+      zIndex={1000}
+    >
       <Flex
         alignItems={'center'}
         px={{ base: 3, md: 8 }}
@@ -115,7 +126,13 @@ const Navbar = () => {
           </DrawerContent>
         </Drawer>
         <Box>
-          <Image src="/kicks.png" alt="logo" width={150} height={50} />
+          <Image
+            src="/JE-Logo.png"
+            alt="logo"
+            width={50}
+            height={50}
+            objectFit="contain"
+          />
         </Box>
         <Flex
           alignItems={'center'}
