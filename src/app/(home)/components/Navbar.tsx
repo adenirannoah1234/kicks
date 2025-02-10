@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   Flex,
@@ -9,18 +9,37 @@ import {
   DrawerOverlay,
   DrawerContent,
   IconButton,
+  useBreakpointValue,
 } from '@chakra-ui/react';
 import Image from 'next/image';
-
 import { X, Menu as MenuIcon } from 'lucide-react';
-
 import { ShoppingCart } from 'lucide-react';
 import { CiUser } from 'react-icons/ci';
 import { CiHeart } from 'react-icons/ci';
 import { GoSearch } from 'react-icons/go';
+import DrawerNavigation from './DrawerNavigation';
+import MobileDrawerNavigation from './mobileDrawer';
+import { navigationLinks } from '@/app/constants';
+import SearchDrawer from './searchDrawer';
 
 const Navbar = () => {
+  const isMobile = useBreakpointValue({ base: true, md: false });
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const {
+    isOpen: isSearchOpen,
+    onOpen: onSearchOpen,
+    onClose: onSearchClose,
+  } = useDisclosure();
+
+  const [activeLink, setActiveLink] = useState<number | null>(null);
+
+  const handleDrawerClose = () => {
+    setActiveLink(null);
+    onClose();
+  };
+  const handleMainLinkClick = (index: number) => {
+    setActiveLink(index);
+  };
 
   return (
     <Box
@@ -46,7 +65,6 @@ const Navbar = () => {
             <IconButton
               onClick={onOpen}
               icon={<MenuIcon size={22} />}
-              // variant="outline"
               aria-label="open drawer"
               bg={'none'}
               color={'#ffd700'}
@@ -64,11 +82,10 @@ const Navbar = () => {
           </Flex>
           <Flex alignItems="center" display={{ base: 'none', md: 'flex' }}>
             <IconButton
-              // onClick={onOpen}
               icon={<GoSearch size={22} />}
-              // variant="outline"
               aria-label="open search"
               bg={'none'}
+              onClick={onSearchOpen}
               color={'#ffd700'}
               _hover={{
                 bg: 'none',
@@ -84,7 +101,7 @@ const Navbar = () => {
           </Flex>
         </Flex>
 
-        <Drawer placement="left" onClose={onClose} isOpen={isOpen}>
+        <Drawer placement="left" onClose={handleDrawerClose} isOpen={isOpen}>
           <DrawerOverlay />
           <DrawerContent>
             <Flex
@@ -95,21 +112,16 @@ const Navbar = () => {
               gap={2}
             >
               <IconButton
-                onClick={onClose}
+                onClick={handleDrawerClose}
                 icon={<X />}
-                // variant="outline"
                 aria-label="close drawer"
                 bg={'transparent'}
                 mr={2}
               />
               <Text display={{ base: 'none', md: 'block' }}>Close</Text>
               <IconButton
-                // onClick={onOpen}
                 icon={<GoSearch size={22} />}
-                // variant="outline"
                 aria-label="open search"
-                // bg={'none'}
-                // color={'#ffd700'}
                 bg={'transparent'}
                 _hover={{
                   bg: 'none',
@@ -118,21 +130,28 @@ const Navbar = () => {
               />
             </Flex>
             <DrawerBody>
-              <p>Some contents...</p>
-              <p>Some contents...</p>
-              <p>Some contents...</p>
+              {isMobile ? (
+                <MobileDrawerNavigation
+                  isOpen={isOpen}
+                  onClose={handleDrawerClose}
+                  navigationLinks={navigationLinks}
+                />
+              ) : (
+                <DrawerNavigation
+                  isOpen={isOpen}
+                  onClose={handleDrawerClose}
+                  activeLink={activeLink}
+                  onMainLinkClick={handleMainLinkClick}
+                />
+              )}
             </DrawerBody>
           </DrawerContent>
         </Drawer>
+
         <Box>
-          <Image
-            src="/JE-Logo.png"
-            alt="logo"
-            width={50}
-            height={50}
-            objectFit="contain"
-          />
+          <Image src="/JE-Logo.png" alt="logo" width={50} height={50} />
         </Box>
+
         <Flex
           alignItems={'center'}
           justifyItems={'space-between'}
@@ -141,7 +160,6 @@ const Navbar = () => {
         >
           <IconButton
             icon={<CiHeart size={22} />}
-            // variant="outline"
             aria-label="open user"
             bg={'none'}
             color={'#ffd700'}
@@ -152,7 +170,6 @@ const Navbar = () => {
           />
           <IconButton
             icon={<CiUser size={22} />}
-            // variant="outline"
             aria-label="open user"
             bg={'none'}
             color={'#ffd700'}
@@ -163,7 +180,6 @@ const Navbar = () => {
           <Box>
             <IconButton
               icon={<ShoppingCart size={22} />}
-              // variant="outline"
               aria-label="open drawer"
               bg={'none'}
               color={'#ffd700'}
@@ -174,6 +190,7 @@ const Navbar = () => {
           </Box>
         </Flex>
       </Flex>
+      <SearchDrawer isOpen={isSearchOpen} onClose={onSearchClose} />
     </Box>
   );
 };
