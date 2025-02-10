@@ -52,3 +52,30 @@ export default {
 //     background-color: white;
 //     border: 1px solid #4B0082;
 //   }
+
+export const navigationLinks = [
+  {
+    title: 'Gifts',
+    subLinks: [
+      { title: 'Holiday Selection', path: '/gifts/holiday' },
+      { title: 'For Her', path: '/gifts/her' },
+      { title: 'For Him', path: '/gifts/him' },
+    ],
+  },
+  {
+    title: 'New',
+    subLinks: [
+      { title: 'Latest Arrivals', path: '/new/latest' },
+      { title: 'Collections', path: '/new/collections' },
+    ],
+  },
+  {
+    title: 'Bags and Small Leather Goods',
+    subLinks: [
+      { title: 'Women Bags', path: '/bags/women' },
+      { title: 'Men Bags', path: '/bags/men' },
+      { title: 'Women Small Leather Goods', path: '/bags/women-slg' },
+      { title: 'Men Small Leather Goods', path: '/bags/men-slg' },
+    ],
+  },
+];
